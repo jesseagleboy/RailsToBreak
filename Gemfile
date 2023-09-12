@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby " ~> 2.7.x"
+ruby "3.2.2"
 
 gem "vite_ruby"
 gem "vite_rails"
