@@ -1,0 +1,114 @@
+---
+interface Props {
+	title: string;
+	user_signed_in?: boolean;
+	current_user?: string;
+}
+import { ViewTransitions } from "astro:transitions";
+import axios from "axios";
+import {userSignal} from "../signals/signals.js";
+const cookie = Astro.request.headers.get("cookie");
+const response = await axios.get("http://192.168.1.136:5100/users/logged_in", { headers: { cookie: cookie } });
+
+const user_signed_in = response.data?.user_signed_in;
+const current_user = response.data?.current_user?.email;
+
+const { title } = Astro.props;
+const welcomeMessage = current_user ? `Welcome, ${current_user}!` : "Welcome, Guest";
+---
+
+<!doctype html>
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='description' content='Astro description' />
+		<meta name='viewport' content='width=device-width' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='generator' content={Astro.generator} />
+		<ViewTransitions />
+		<title>{title}</title>
+	</head>
+	<nav>
+		<ul>
+			<li>{welcomeMessage}</li>
+		</ul>
+		{
+			!user_signed_in && (
+				<span class="flex flex-row gap-3">
+					<button class="btn">
+						<a href='http://192.168.1.136:5100/posts/sign_in'>Log In</a>
+					</button>
+					<button class="btn">
+						<a href='http://192.168.1.136:5100/posts/sign_up'>Sign Up</a>
+					</button>
+				</span>
+			)
+		}
+		{
+			user_signed_in && (
+				<form action='http://192.168.1.136:5100/users/sign_out'>
+					<input type='hidden' name='_method' value='delete' />
+					<button type='submit'>Log Out</button>
+				</form>
+			)
+		}
+	</nav>
+	<body>
+		<slot/>
+	</body>
+
+	<style is:global>
+		:root {
+			--accent: 136, 58, 234;
+			--accent-light: 224, 204, 250;
+			--accent-dark: 49, 10, 101;
+			--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
+			/* create responsive width */
+			--width: 100%;
+			--max-width: 800px;
+		}
+		html {
+			font-family: system-ui, sans-serif;
+			background: #13151a;
+			background-size: 224px;
+		}
+		code {
+			font-family:
+				Menlo,
+				Monaco,
+				Lucida Console,
+				Liberation Mono,
+				DejaVu Sans Mono,
+				Bitstream Vera Sans Mono,
+				Courier New,
+				monospace;
+		}
+		label {
+			color: white;
+		}
+
+		button {
+			background: rgb(var(--accent));
+			color: white;
+			border: none;
+			padding: 0.5rem 1rem;
+			border-radius: 0.25rem;
+			cursor: pointer;
+		}
+		
+	</style>
+	<style>
+		nav {
+			background: rgb(var(--accent));
+			color: white;
+			padding: 1rem;
+		}
+		ul {
+			display: flex;
+			gap: 1rem;
+			list-style-type: none;
+		}
+	</style>
+
+
+</html>

@@ -1,0 +1,72 @@
+---
+import { computed, effect } from "@preact/signals-core";
+import { userSignal } from "../signals/signals";
+interface Props {
+	title: string;
+	body: string;
+	href: string;
+	email?: string;
+	current_user?: string;
+}
+
+const { href, title, body, email, current_user } = Astro.props;
+
+const isCurrentUser = email === current_user;
+---
+
+<li class='link-card' data-user-matching={isCurrentUser} transition:animate='slide'>
+	<a href={href}>
+		<h2 class="italic">
+			{title}
+			<span>&rarr;</span>
+		</h2>
+		<p>
+			Content: {body}
+		</p>
+		<p> Email: {email}</p>
+	</a>
+</li>
+<style>
+	.link-card {
+		list-style: none;
+		display: flex;
+		padding: 1px;
+		background-color: #23262d;
+		background-image: none;
+		background-size: 400%;
+		border-radius: 7px;
+		background-position: 100%;
+		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+	}
+	.link-card > a {
+		width: 100%;
+		text-decoration: none;
+		line-height: 1.4;
+		padding: calc(1.5rem - 1px);
+		border-radius: 8px;
+		color: white;
+		background-color: #23262d;
+		opacity: 0.8;
+	}
+	h2 {
+		margin: 0;
+		font-size: 1.25rem;
+		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+	p {
+		margin-top: 0.5rem;
+		margin-bottom: 0;
+	}
+	.link-card:is(:hover, :focus-within) {
+		background-position: 0;
+		background-image: var(--accent-gradient);
+	}
+	.link-card:is(:hover, :focus-within) h2 {
+		color: rgb(var(--accent-light));
+	}
+	.link-card[data-user-matching] {
+		/* create outer glow */
+		box-shadow: 0 0 0 2px rgb(var(--accent-light));
+	}
+</style>

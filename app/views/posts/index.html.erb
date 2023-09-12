@@ -1,0 +1,40 @@
+<!-- standard index page -->
+<div class="container">
+  <div class="row">
+   <%= @welcome_message %>
+  </div>
+</div>
+<div>Will be a list of blog posts</div>
+<div>
+<% @posts.each do |post| %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 <%= 'border' if post_for_logged_in_user(post, current_user) %>">
+        <h2 class='font-bold'>Title: <%= post.title %></h2>
+        <div>
+        <p>Body: <%= post.body %></p>
+        <span class='flex flex-column'>
+        <%= link_to "Edit Post", edit_post_path(post) if post_for_logged_in_user(post, current_user)
+%>
+        <%= link_to "Delete Post", post_path(post), method: :delete, data: { confirm: "Are you sure?" } if post_for_logged_in_user(post, current_user)
+ %>
+        </span>
+      </>
+    </div>
+  </div>
+<% end %>
+</div>
+<!-- end standard index page -->
+</div>
+<!-- end content -->
+<!-- footer -->
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <p>Footer</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end footer -->
