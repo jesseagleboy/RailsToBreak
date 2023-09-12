@@ -7,7 +7,6 @@ gem "vite_ruby"
 gem "vite_rails"
 gem "httparty"
 gem 'rack-cors'
-gem 'devise-api', github: 'nejdetkadir/devise-api', branch: 'main'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.6"
@@ -82,3 +81,5 @@ gem "tailwindcss-rails", "~> 2.0"
 gem "devise", "~> 4.9"
 
 gem "htmlbeautifier", "~> 1.4"
+
+gem "devise-api", "~> 0.1.3"
