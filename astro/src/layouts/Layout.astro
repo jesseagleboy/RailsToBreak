@@ -8,7 +8,10 @@ import { ViewTransitions } from "astro:transitions";
 import axios from "axios";
 import {userSignal} from "../signals/signals.js";
 const cookie = Astro.request.headers.get("cookie");
-const response = await axios.get("http://192.168.1.136:5100/users/logged_in", { headers: { cookie: cookie } });
+const response = await axios.get("http://localhost:5100/users/logged_in", { headers: { cookie: cookie } }).catch(err => {
+	console.log(err);
+	return { data: { user_signed_in: false, current_user: null }};
+});
 
 const user_signed_in = response.data?.user_signed_in;
 const current_user = response.data?.current_user?.email;
@@ -36,17 +39,17 @@ const welcomeMessage = current_user ? `Welcome, ${current_user}!` : "Welcome, Gu
 			!user_signed_in && (
 				<span class="flex flex-row gap-3">
 					<button class="btn">
-						<a href='http://192.168.1.136:5100/posts/sign_in'>Log In</a>
+						<a href='http://localhost:5100/posts/sign_in'>Log In</a>
 					</button>
 					<button class="btn">
-						<a href='http://192.168.1.136:5100/posts/sign_up'>Sign Up</a>
+						<a href='http://localhost:5100/posts/sign_up'>Sign Up</a>
 					</button>
 				</span>
 			)
 		}
 		{
 			user_signed_in && (
-				<form action='http://192.168.1.136:5100/users/sign_out'>
+				<form action='http://localhost:5100/users/sign_out'>
 					<input type='hidden' name='_method' value='delete' />
 					<button type='submit'>Log Out</button>
 				</form>

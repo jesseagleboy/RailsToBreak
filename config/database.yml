@@ -20,12 +20,14 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV["POSTGRES_URL"] %>
+  prepared_statements: false
+  advisory_locks: false           
+
 
 development:
   <<: *default
-  database: RailsToBreak_development
-  port: 5433
-
+  database: <%= ENV["POSTGRES_DATABASE"] %>
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -77,6 +79,6 @@ test:
 #
 production:
   <<: *default
-  database: RailsToBreak_production
-  username: RailsToBreak
-  password: <%= ENV["RAILSTOBREAK_DATABASE_PASSWORD"] %>
+  database: <%= ENV["POSTGRES_DATABASE"] %>
+  username: <%= ENV["POSTGRES_USER"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>

@@ -4,7 +4,10 @@ import Card from "../components/Card.astro";
 import axios from "axios";
 
 const cookie = Astro.request.headers.get("cookie");
-const response = await axios.get("http://192.168.1.136:5100/posts.json", { headers: { cookie: cookie } });
+const response = await axios.get("http://localhost:5100/posts.json", { headers: { cookie: cookie } }).catch(err => {
+	return { data: { posts: [], current_user: null } };
+});
+console.log(response?.data, 'astro response happening')
 const posts = response.data?.posts;
 const current_user = response.data?.current_user?.email;
 const mainGreeting = current_user ? `Recent posts from Astro on Rails` : "Please sign in to see posts";

@@ -7,13 +7,14 @@ class PostsController < ApplicationController
         respond_to do |format|
             format.html {
                 if user_signed_in?
-                    redirect_to 'http://192.168.1.136:4321/'
+                    redirect_to 'http://localhost:4321/', allow_other_host: true
                 else
                     redirect_to new_user_session_path
                 end
             }
             format.json {
                 @posts = []
+                puts @posts, 'is happening here'
                 if user_signed_in?
                     @posts = Post.order(created_at: :desc)
                 end
@@ -66,7 +67,7 @@ class PostsController < ApplicationController
             respond_to do |format|
                 format.html {
                     flash[:notice] = "Post was successfully created."
-            redirect_to 'http://192.168.1.136:4321/', allow_other_host: true
+            redirect_to 'http://localhost:4321/', allow_other_host: true
                 }
                 format.json { render json: {post: @post, current_user: current_user, user_signed_in: user_signed_in?} }
             end
@@ -77,7 +78,7 @@ class PostsController < ApplicationController
 
     def manual_logout
         sign_out current_user
-        redirect_to 'http://192.168.1.136:4321'
+        redirect_to 'http://localhost:4321'
     end
     def manual_sign_in
         redirect_to new_user_session_path

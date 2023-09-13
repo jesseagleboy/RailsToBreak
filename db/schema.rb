@@ -62,12 +62,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_150218) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "post_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["post_id"], name: "index_users_on_post_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "posts", "users"
-  add_foreign_key "users", "posts"
 end
