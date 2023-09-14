@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html {
         if user_signed_in?
-          redirect_to "http://localhost:4321"
+          redirect_to "https://rails-to-break.vercel.app/"
         else
           redirect_to new_user_session_path
         end
@@ -83,7 +83,7 @@ class PostsController < ApplicationController
 
   def manual_logout
     sign_out current_user
-    redirect_to "http://localhost:4321"
+    redirect_to "https://rails-to-break.vercel.app/"
   end
 
   def manual_sign_in
