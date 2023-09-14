@@ -1,0 +1,41 @@
+---
+import axios from "axios";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+const cookie = Astro.request.headers.get('cookie')
+const id = Astro.params.id;
+const post = await axios.get(`http://https://astro-rails.onrender.com/posts/${id}.json`, {headers: {cookie} }).catch(err => {
+	const errorMessage = err?.response?.data?.error;
+	return {data: {post: {title: null, body: null} }};
+});
+
+const {body, title, created_at} = post?.data?.post;
+
+
+
+if (title === null) {
+	return Astro.redirect('/404');
+}
+
+---
+<Layout title={title}>
+	<span id="test">
+	<Card body={body} title={title} href="" />
+	<label>{new Date(created_at).toDateString()}</label>
+	</span>
+	
+</Layout>
+
+<style>
+	#make-center {
+		display: grid;
+		margin-top: 10%;
+	}
+
+	#test {
+		display: grid;
+		place-items: center;
+		height: 80dvh;
+	}
+
+</style>
