@@ -6,7 +6,7 @@ if (Astro.request.method === 'POST') {
    const email = data.get('email');
     const password = data.get('password');
     console.log(email, password);
-    const response = await axios.post('http://localhost:5100/users/tokens/sign_in', {email, password}, {
+    const response = await axios.post('https://astro-rails.onrender.com/users/tokens/sign_in', {email, password}, {
         headers: {
             'Content-Type': 'application/json',
         }
