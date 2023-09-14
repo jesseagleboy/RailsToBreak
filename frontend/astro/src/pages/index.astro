@@ -13,7 +13,7 @@ const current_user = response.data?.current_user?.email;
 const mainGreeting = current_user ? `Recent posts from Astro on Rails` : "Please sign in to see posts";
 ---
 
-<Layout title='Welcome to Astro.'>
+
 	<main class="prose prose-invert">
 		<h3>Welcome to Astro on Rails</h3>
 		<h4>{mainGreeting}</h4>
@@ -31,7 +31,7 @@ const mainGreeting = current_user ? `Recent posts from Astro on Rails` : "Please
 			}
 		</div>
 	</main>
-</Layout>
+
 
 <style>
 	main {
