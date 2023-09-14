@@ -80,8 +80,6 @@ test:
 #
 production:
   <<: *default
-  # database: <%= ENV["POSTGRES_DATABASE"] %>
-  # username: <%= ENV["POSTGRES_USER"] %>
-  # password: <%= ENV["POSTGRES_PASSWORD"] %>
-  database: RailsToBreak_production
-  port: 5433
+  database: <%= ENV["POSTGRES_DATABASE"] %>
+  username: <%= ENV["POSTGRES_USER"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>

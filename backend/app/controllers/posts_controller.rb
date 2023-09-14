@@ -6,7 +6,6 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html {
         if user_signed_in?
-            puts 'Route got hit here now'
           redirect_to "http://localhost:4321"
         else
           redirect_to new_user_session_path
