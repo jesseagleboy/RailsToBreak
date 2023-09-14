@@ -57,7 +57,7 @@ dependencies:
     specifier: ^3.1.0
     version: 3.1.0(rollup@3.29.1)
   sass:
-    specifier: ^1.66.1
+    specifier: ^1.67.0
     version: 1.67.0
   svelte:
     specifier: ^4.2.0
@@ -67,9 +67,9 @@ dependencies:
     version: 3.3.3
   typescript:
     specifier: ^5.0.0
-    version: 5.2.2
+    version: 4.9.5
   vercel:
-    specifier: ^32.2.1
+    specifier: ^32.2.2
     version: 32.2.2
 
 devDependencies:
@@ -2713,12 +2713,6 @@ packages:
   /typescript@4.9.5:
     resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
     engines: {node: '>=4.2.0'}
-    hasBin: true
-    dev: false
-
-  /typescript@5.2.2:
-    resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
-    engines: {node: '>=14.17'}
     hasBin: true
     dev: false
 
