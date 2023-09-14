@@ -1,0 +1,17 @@
+current directory: /Users/jesseslomowitz/Visual Studio Code/RailsToBreak/vendor/bundle/ruby/2.7.0/gems/racc-1.7.1/ext/racc/cparse
+/Users/jesseslomowitz/.asdf/installs/ruby/2.7.8/bin/ruby -I /Users/jesseslomowitz/.asdf/installs/ruby/2.7.8/lib/ruby/2.7.0 -r ./siteconf20230913-61143-zk0h3w.rb extconf.rb
+checking for rb_block_call()... yes
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /Users/jesseslomowitz/Visual Studio Code/RailsToBreak/vendor/bundle/ruby/2.7.0/gems/racc-1.7.1/ext/racc/cparse
+make "DESTDIR=" clean
+
+current directory: /Users/jesseslomowitz/Visual Studio Code/RailsToBreak/vendor/bundle/ruby/2.7.0/gems/racc-1.7.1/ext/racc/cparse
+make "DESTDIR="
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+
+current directory: /Users/jesseslomowitz/Visual Studio Code/RailsToBreak/vendor/bundle/ruby/2.7.0/gems/racc-1.7.1/ext/racc/cparse
+make "DESTDIR=" install
+/opt/homebrew/bin/ginstall -c -m 0755 cparse.bundle ./.gem.20230913-61143-lcjncv/racc
