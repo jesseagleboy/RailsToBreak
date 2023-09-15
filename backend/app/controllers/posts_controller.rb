@@ -6,7 +6,6 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html {
         if user_signed_in?
-          session[:_rails_to_break_session] = cookies[:_rails_to_break_session]
           redirect_to "https://rails-to-break.vercel.app/", allow_other_host: true
         else
           redirect_to new_user_session_path

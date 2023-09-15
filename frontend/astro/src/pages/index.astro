@@ -4,7 +4,7 @@ import Card from "../components/Card.astro";
 import axios from "axios";
 
 const cookie = Astro.request.headers.get("cookie");
-const response = await axios.get("https://astro-rails.onrender.com/posts.json", { headers: { cookie: cookie } }).catch(err => {
+const response = await axios.get("https://astro-rails.onrender.com/posts.json", { headers: { cookie: cookie }, withCredentials: true }).catch(err => {
 	return { data: { posts: [], current_user: null } };
 });
 console.log(response?.data, 'astro response happening')
