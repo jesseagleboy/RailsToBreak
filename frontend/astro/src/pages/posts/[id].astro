@@ -4,7 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.astro";
 const cookie = Astro.request.headers.get('cookie')
 const id = Astro.params.id;
-const post = await axios.get(`https://astro-rails.onrender.com/posts/${id}.json`, {headers: {cookie} }).catch(err => {
+const post = await axios.get(`https://app.railstobreak.com/posts/${id}.json`, {headers: {cookie} }).catch(err => {
 	const errorMessage = err?.response?.data?.error;
 	return {data: {post: {title: null, body: null} }};
 });
