@@ -10,14 +10,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/svelte": "^4.0.2",
-    "@astrojs/tailwind": "^5.0.0",
-    "@astrojs/vercel": "^5.0.0",
+    "@astrojs/svelte": "^4.0.3",
+    "@astrojs/tailwind": "^5.0.2",
+    "@astrojs/vercel": "^5.0.2",
     "@preact/signals-core": "^1.5.0",
     "@tailwindcss/container-queries": "^0.1.1",
-    "astro": "^3.1.0",
-    "axios": "^1.5.0",
-    "svelte": "^4.2.0",
+    "astro": "^3.3.3",
+    "axios": "^1.5.1",
+    "svelte": "^4.2.2",
     "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
